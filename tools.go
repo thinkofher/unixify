@@ -8,10 +8,15 @@ import (
 	"unicode"
 )
 
+// notify returns modified version of given string
+// by adding application name at beginning.
 func notify(s string) string {
 	return fmt.Sprintf("%s: %s", appName, s)
 }
 
+// askUser asks the user a given question and
+// returns true if user answered positively or
+// false if negatively.
 func askUser(question string) (bool, error) {
 	fmt.Printf("%s (y/N): ", notify(question))
 	reader := bufio.NewReader(os.Stdin)
@@ -28,7 +33,7 @@ func askUser(question string) (bool, error) {
 	}
 }
 
-// pwd returns current working directory
+// pwd returns current working directory.
 func pwd() (string, error) {
 	ans, err := os.Getwd()
 	if err != nil {
@@ -37,6 +42,7 @@ func pwd() (string, error) {
 	return ans, nil
 }
 
+// unixify returns unixy version of given filename.
 func unixify(filename string) string {
 	return strings.ToLower(strings.ReplaceAll(filename, " ", "_"))
 }
