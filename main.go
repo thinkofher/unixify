@@ -54,7 +54,7 @@ func main() {
 
 	orders := makeOrders(cwd, files)
 	if len(*orders) < 1 {
-		fmt.Println("Files are already unixified.")
+		fmt.Printf("Files in '%s' are already unixified.\n", cwd)
 		os.Exit(0)
 	}
 
