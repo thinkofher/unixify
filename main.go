@@ -15,4 +15,18 @@ func main() {
 	flag.BoolVar(&interactive, "dirs", false, "asks before every rename")
 	flag.BoolVar(&verbose, "dirs", false, "print current actions")
 	flag.Parse()
+
+	// TODO: Print info about program when using --help flag
+	// ...
+	// TODO: Get current working directory
+	// ...
+	// TODO: Get []os.Filenfio slice in current working directory
+	// ...
+	// TODO: Make slice of checkers on the basis of parsed flags
+	// ..
+	// TODO: Apply checkers to []os.Fileinfo slice
+	// ...
+	// TODO: Make a []order slice from []os.Fileinfo slice
+	// ...
+	// TODO: Execute orders
 }
