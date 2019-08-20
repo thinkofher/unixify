@@ -2,7 +2,6 @@ package main
 
 import (
 	"os"
-	"path/filepath"
 	"strings"
 )
 
@@ -56,23 +55,4 @@ func isHiddenOrDir(file os.FileInfo) bool {
 // and is not hidden.
 func isNormal(file os.FileInfo) bool {
 	return !isDir(file) && !isHidden(file)
-}
-
-// makeOrders returns pointer to slice of orders created from
-// given root filepath and slice of os.FileInfos. Function uses
-// filepath.Join function to merge filenames and given root filepath,
-// which makes makeOrders portable.
-func makeOrders(root string, files []os.FileInfo) *[]order {
-	var ans []order
-	for _, file := range files {
-		prev := filepath.Join(root, file.Name())
-		unixified := filepath.Join(root, unixify(file.Name()))
-
-		if prev != unixified {
-			ans = append(ans,
-				*newOrder(prev, unixified))
-		}
-	}
-
-	return &ans
 }
