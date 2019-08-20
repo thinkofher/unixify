@@ -29,13 +29,13 @@ func main() {
 
 	cwd, err := pwd()
 	if err != nil {
-		fmt.Println("Cannot get current working directory.")
+		fmt.Fprintln(os.Stderr, "Cannot get current working directory.")
 		os.Exit(1)
 	}
 
 	files, err := ioutil.ReadDir(cwd)
 	if err != nil {
-		fmt.Println("Cannot get list of files in current working directory.")
+		fmt.Fprintln(os.Stderr, "Cannot get list of files in current working directory.")
 		os.Exit(1)
 	}
 
@@ -63,7 +63,7 @@ func main() {
 		permQuestion := fmt.Sprintf("Do you want to rename %d files?", len(*orders))
 		perm, err = askUser(permQuestion)
 		if err != nil {
-			fmt.Println("Invalid input.")
+			fmt.Fprintln(os.Stderr, "Invalid input.")
 			os.Exit(1)
 		}
 
@@ -78,7 +78,7 @@ func main() {
 		if interactive {
 			orderPerm, err = askUser(o.interactiveQuestion())
 			if err != nil {
-				fmt.Println("Invalid input.")
+				fmt.Fprintln(os.Stderr, "Invalid input.")
 				os.Exit(1)
 			}
 			if !orderPerm {
@@ -90,7 +90,7 @@ func main() {
 
 		err = o.execute()
 		if err != nil {
-			fmt.Println(notify("cannot " + o.interactiveMsg()))
+			fmt.Fprintln(os.Stderr, notify("cannot "+o.interactiveMsg()))
 		}
 	}
 }
