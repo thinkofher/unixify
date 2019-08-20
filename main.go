@@ -12,6 +12,8 @@ var hidden bool
 var interactive bool
 var verbose bool
 
+var checkers []checker
+
 func main() {
 	flag.BoolVar(&dirs, "dirs", false, "include directories")
 	flag.BoolVar(&hidden, "hidden", false, "include hidden files")
@@ -28,14 +30,23 @@ func main() {
 		os.Exit(1)
 	}
 
-	// TODO: Get []os.Filenfio slice in current working directory
 	files, err := ioutil.ReadDir(pwd)
 	if err != nil {
 		fmt.Println("Cannot get list of files in current working directory.")
 		os.Exit(1)
 	}
-	// TODO: Make slice of checkers on the basis of parsed flags
-	// ..
+
+	checkers = append(checkers, isNormal)
+	if dirs && hidden {
+		checkers = append(checkers, isHiddenOrDir)
+	} else {
+		if dirs {
+			checkers = append(checkers, isDirNonHidden)
+		} else if hidden {
+			checkers = append(checkers, isHiddenNonDir)
+		}
+	}
+
 	// TODO: Apply checkers to []os.Fileinfo slice
 	// ...
 	// TODO: Make a []order slice from []os.Fileinfo slice
