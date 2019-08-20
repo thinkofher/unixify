@@ -7,8 +7,12 @@ import (
 	"unicode"
 )
 
+func notify(s string) string {
+	return fmt.Sprintf("%s: %s", appName, s)
+}
+
 func askUser(question string) (bool, error) {
-	fmt.Printf("%s: %s (y/N): ", appName, question)
+	fmt.Printf("%s (y/N): ", notify(question))
 	reader := bufio.NewReader(os.Stdin)
 
 	char, _, err := reader.ReadRune()
