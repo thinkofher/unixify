@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 )
 
@@ -19,4 +20,12 @@ func (o order) execute() error {
 		return err
 	}
 	return nil
+}
+
+func (o order) interactiveMsg() string {
+	return fmt.Sprintf("rename %s -> %s", o.prev, o.unixified)
+}
+
+func (o order) interactiveQuestion() string {
+	return fmt.Sprintf("%s ?", o.interactiveMsg())
 }
