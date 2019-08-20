@@ -8,7 +8,7 @@ import (
 
 type checker func(os.FileInfo) bool
 
-func applyCheckers(files []os.FileInfo, checkers ...checker) *[]os.FileInfo {
+func applyCheckers(files []os.FileInfo, checkers ...checker) []os.FileInfo {
 	var ans []os.FileInfo
 
 	for _, file := range files {
@@ -19,7 +19,7 @@ func applyCheckers(files []os.FileInfo, checkers ...checker) *[]os.FileInfo {
 			}
 		}
 	}
-	return &ans
+	return ans
 }
 
 func isDir(file os.FileInfo) bool { return file.IsDir() }
