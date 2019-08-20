@@ -50,7 +50,7 @@ func main() {
 
 	files = applyCheckers(files, checkers...)
 
-	// TODO: Make a []order slice from []os.Fileinfo slice
-	// ...
+	orders := makeOrders(cwd, files)
+
 	// TODO: Execute orders
 }
