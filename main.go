@@ -58,7 +58,6 @@ func main() {
 		os.Exit(0)
 	}
 
-	// TODO: Execute orders
 	// If user did not provide -yes flag
 	if !perm {
 		permQuestion := fmt.Sprintf("Do you want to rename %d files?", len(*orders))
@@ -71,6 +70,27 @@ func main() {
 		// If user (again) did not approve
 		if !perm {
 			os.Exit(0)
+		}
+	}
+
+	var orderPerm bool
+	for _, o := range *orders {
+		if interactive {
+			orderPerm, err = askUser(o.interactiveQuestion())
+			if err != nil {
+				fmt.Println("Invalid input.")
+				os.Exit(1)
+			}
+			if !orderPerm {
+				continue
+			}
+		} else if verbose {
+			fmt.Println(notify(o.interactiveMsg()))
+		}
+
+		err = o.execute()
+		if err != nil {
+			fmt.Println(notify("cannot " + o.interactiveMsg()))
 		}
 	}
 }
