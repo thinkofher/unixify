@@ -7,6 +7,7 @@ import (
 	"os"
 )
 
+// flags variables
 var dirs bool
 var hidden bool
 var interactive bool
