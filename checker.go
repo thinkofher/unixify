@@ -50,8 +50,10 @@ func makeOrders(root string, files []os.FileInfo) *[]order {
 		prev := filepath.Join(root, file.Name())
 		unixified := filepath.Join(root, unixify(file.Name()))
 
-		ans = append(ans,
-			*newOrder(prev, unixified))
+		if prev != unixified {
+			ans = append(ans,
+				*newOrder(prev, unixified))
+		}
 	}
 
 	return &ans
