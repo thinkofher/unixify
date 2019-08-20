@@ -12,10 +12,12 @@ var dirs bool
 var hidden bool
 var interactive bool
 var verbose bool
+var perm bool
 
 var checkers []checker
 
 func main() {
+	flag.BoolVar(&perm, "yes", false, "skip asking to rename at startup")
 	flag.BoolVar(&dirs, "dirs", false, "include directories")
 	flag.BoolVar(&hidden, "hidden", false, "include hidden files")
 	flag.BoolVar(&interactive, "interactive", false, "asks before every rename")
