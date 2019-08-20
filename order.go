@@ -9,6 +9,10 @@ type order struct {
 	unixified string
 }
 
+func newOrder(prev, unixified string) *order {
+	return &order{prev: prev, unixified: unixified}
+}
+
 func (o order) execute() error {
 	err := os.Rename(o.prev, o.unixified)
 	if err != nil {
