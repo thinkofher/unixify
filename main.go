@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"io/ioutil"
 	"os"
 )
 
@@ -21,13 +22,18 @@ func main() {
 	// TODO: Print info about program when using --help flag
 	// ...
 
-	_, err := pwd()
+	pwd, err := pwd()
 	if err != nil {
 		fmt.Println("Cannot get current working directory.")
 		os.Exit(1)
 	}
+
 	// TODO: Get []os.Filenfio slice in current working directory
-	// ...
+	files, err := ioutil.ReadDir(pwd)
+	if err != nil {
+		fmt.Println("Cannot get list of files in current working directory.")
+		os.Exit(1)
+	}
 	// TODO: Make slice of checkers on the basis of parsed flags
 	// ..
 	// TODO: Apply checkers to []os.Fileinfo slice
