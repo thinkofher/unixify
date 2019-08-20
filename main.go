@@ -25,13 +25,13 @@ func main() {
 	// TODO: Print info about program when using --help flag
 	// ...
 
-	pwd, err := pwd()
+	cwd, err := pwd()
 	if err != nil {
 		fmt.Println("Cannot get current working directory.")
 		os.Exit(1)
 	}
 
-	files, err := ioutil.ReadDir(pwd)
+	files, err := ioutil.ReadDir(cwd)
 	if err != nil {
 		fmt.Println("Cannot get list of files in current working directory.")
 		os.Exit(1)
@@ -48,8 +48,8 @@ func main() {
 		}
 	}
 
-	// TODO: Apply checkers to []os.Fileinfo slice
-	// ...
+	files = applyCheckers(files, checkers...)
+
 	// TODO: Make a []order slice from []os.Fileinfo slice
 	// ...
 	// TODO: Execute orders
