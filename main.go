@@ -51,6 +51,10 @@ func main() {
 	files = applyCheckers(files, checkers...)
 
 	orders := makeOrders(cwd, files)
+	if len(*orders) < 1 {
+		fmt.Println("Files are already unixified.")
+		os.Exit(0)
+	}
 
 	// TODO: Execute orders
 }
