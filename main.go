@@ -13,9 +13,9 @@ var verbose bool
 
 func main() {
 	flag.BoolVar(&dirs, "dirs", false, "include directories")
-	flag.BoolVar(&hidden, "dirs", false, "include hidden files")
-	flag.BoolVar(&interactive, "dirs", false, "asks before every rename")
-	flag.BoolVar(&verbose, "dirs", false, "print current actions")
+	flag.BoolVar(&hidden, "hidden", false, "include hidden files")
+	flag.BoolVar(&interactive, "interactive", false, "asks before every rename")
+	flag.BoolVar(&verbose, "verbose", false, "print current actions")
 	flag.Parse()
 
 	// TODO: Print info about program when using --help flag
