@@ -2,6 +2,8 @@ package main
 
 import (
 	"flag"
+	"fmt"
+	"os"
 )
 
 var dirs bool
@@ -18,8 +20,12 @@ func main() {
 
 	// TODO: Print info about program when using --help flag
 	// ...
-	// TODO: Get current working directory
-	// ...
+
+	_, err := pwd()
+	if err != nil {
+		fmt.Println("Cannot get current working directory.")
+		os.Exit(1)
+	}
 	// TODO: Get []os.Filenfio slice in current working directory
 	// ...
 	// TODO: Make slice of checkers on the basis of parsed flags

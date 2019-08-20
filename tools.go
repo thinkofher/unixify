@@ -22,3 +22,11 @@ func askUser(question string) (bool, error) {
 		return false, nil
 	}
 }
+
+func pwd() (string, error) {
+	ans, err := os.Getwd()
+	if err != nil {
+		return "", err
+	}
+	return ans, nil
+}
