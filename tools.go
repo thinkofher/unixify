@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
 	"unicode"
 )
 
@@ -34,4 +35,8 @@ func pwd() (string, error) {
 		return "", err
 	}
 	return ans, nil
+}
+
+func unixify(filename string) string {
+	return strings.ToLower(strings.ReplaceAll(filename, " ", "_"))
 }
