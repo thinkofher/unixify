@@ -23,7 +23,7 @@ func (o order) execute() error {
 }
 
 func (o order) interactiveMsg() string {
-	return fmt.Sprintf("rename %s -> %s", o.prev, o.unixified)
+	return fmt.Sprintf("rename '%s' -> '%s'", o.prev, o.unixified)
 }
 
 func (o order) interactiveQuestion() string {
