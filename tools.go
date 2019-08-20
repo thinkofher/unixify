@@ -23,6 +23,7 @@ func askUser(question string) (bool, error) {
 	}
 }
 
+// pwd returns current working directory
 func pwd() (string, error) {
 	ans, err := os.Getwd()
 	if err != nil {
