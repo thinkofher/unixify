@@ -57,4 +57,18 @@ func main() {
 	}
 
 	// TODO: Execute orders
+	// If user did not provide -yes flag
+	if !perm {
+		permQuestion := fmt.Sprintf("Do you want to rename %d files?", len(*orders))
+		perm, err = askUser(permQuestion)
+		if err != nil {
+			fmt.Println("Invalid input.")
+			os.Exit(1)
+		}
+
+		// If user (again) did not approve
+		if !perm {
+			os.Exit(0)
+		}
+	}
 }
