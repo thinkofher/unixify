@@ -13,11 +13,11 @@ INFO:
     for changing file and folder names to be more
     unixy.
 
-    Example:
+    Examples:
 
     * "Some File"         -> "some_file"
     * "sOme File"         -> "some_file"
-    * "SOMEFILE"          -> "some_file"
+    * "SOMEFILE"          -> "somefile"
     * ".some hidden file" -> ".some_hidden_file"
 
 AUTHOR:
