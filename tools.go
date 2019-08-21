@@ -46,3 +46,20 @@ func pwd() (string, error) {
 func unixify(filename string) string {
 	return strings.ToLower(strings.ReplaceAll(filename, " ", "_"))
 }
+
+// usageVar returns replaceable version
+// of given string s, to use in usage
+func usageVar(s string) string {
+	return fmt.Sprintf("{{%s}}", s)
+}
+
+// usage returns filled version of
+// usasgeRaw, with key and values from
+// config.go
+func usage() string {
+	var ans = usageRaw
+	for key, val := range usageMap {
+		ans = strings.ReplaceAll(ans, usageVar(key), val)
+	}
+	return ans
+}
