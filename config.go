@@ -38,3 +38,10 @@ OPTIONS:
     -yes
         skip asking to rename at startup
 `
+
+var usageMap = map[string]string{
+	"appName": appName,
+	"version": version,
+	"author":  author,
+	"email":   email,
+}
