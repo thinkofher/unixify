@@ -23,9 +23,6 @@ INFO:
 AUTHOR:
     {{author}} <{{email}}>
 
-VERSION:
-    {{version}}
-
 OPTIONS:
     -dirs
         include directories
@@ -35,6 +32,8 @@ OPTIONS:
         asks before every rename
     -verbose
         print current actions
+    -version
+        show version and exit
     -yes
         skip asking to rename at startup
 `

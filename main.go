@@ -13,6 +13,7 @@ var hidden bool
 var interactive bool
 var verbose bool
 var perm bool
+var showVer bool
 
 var checkers []checker
 
@@ -23,6 +24,7 @@ func init() {
 		fmt.Fprintf(os.Stdout, usage())
 	}
 
+	flag.BoolVar(&showVer, "version", false, "show version and exit")
 	flag.BoolVar(&perm, "yes", false, "skip asking to rename at startup")
 	flag.BoolVar(&dirs, "dirs", false, "include directories")
 	flag.BoolVar(&hidden, "hidden", false, "include hidden files")
@@ -32,6 +34,13 @@ func init() {
 }
 
 func main() {
+
+	// show version and exit the program with zero status
+	if showVer {
+		fmt.Println(version)
+		os.Exit(0)
+	}
+
 	// get current working directory
 	cwd, err := pwd()
 	if err != nil {
