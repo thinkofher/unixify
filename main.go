@@ -17,6 +17,12 @@ var perm bool
 var checkers []checker
 
 func init() {
+	// replace Usage func in flag package with my
+	// own version
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stdout, usage())
+	}
+
 	flag.BoolVar(&perm, "yes", false, "skip asking to rename at startup")
 	flag.BoolVar(&dirs, "dirs", false, "include directories")
 	flag.BoolVar(&hidden, "hidden", false, "include hidden files")
@@ -26,22 +32,21 @@ func init() {
 }
 
 func main() {
-
-	// TODO: Print info about program when using --help flag
-	// ...
-
+	// get current working directory
 	cwd, err := pwd()
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "Cannot get current working directory.")
 		os.Exit(1)
 	}
 
+	// get list of files in current working directory
 	files, err := ioutil.ReadDir(cwd)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "Cannot get list of files in current working directory.")
 		os.Exit(1)
 	}
 
+	// apply checkers on basis of used flags
 	checkers = append(checkers, isNormal)
 	if dirs && hidden {
 		checkers = append(checkers, isHiddenOrDir)
