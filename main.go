@@ -55,15 +55,23 @@ func main() {
 		os.Exit(1)
 	}
 
-	// apply checkers on basis of used flags
-	checkers = append(checkers, isNormal)
-	if dirs && hidden {
-		checkers = append(checkers, isHiddenOrDir)
+	if flag.NArg() == 0 {
+		// apply checkers on basis of used flags
+		checkers = append(checkers, isNormal)
+		if dirs && hidden {
+			checkers = append(checkers, isHiddenOrDir)
+		} else {
+			if dirs {
+				checkers = append(checkers, isDirNonHidden)
+			} else if hidden {
+				checkers = append(checkers, isHiddenNonDir)
+			}
+		}
 	} else {
-		if dirs {
-			checkers = append(checkers, isDirNonHidden)
-		} else if hidden {
-			checkers = append(checkers, isHiddenNonDir)
+		// Adding checkers dependent on given
+		// arguments, which are filenames
+		for _, filename := range flag.Args() {
+			checkers = append(checkers, filenameChecker(filename))
 		}
 	}
 

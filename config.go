@@ -6,7 +6,7 @@ var author = "Beniamin Dudek"
 var email = "beniamin.dudek@yahoo.com"
 
 var usageRaw = `USAGE:
-    {{appName}} [OPTIONS]
+    {{appName}} [OPTIONS] [ARGS...]
 
 INFO:
     Simple portable command line interface tool

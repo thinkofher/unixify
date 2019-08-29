@@ -54,6 +54,8 @@ Sample session with unixify:
     'Some File'  'Some Folder'  'Some Other File'
     $ unixify
     unixify: Do you want to rename 2 files? (y/N): y
+    $ ls
+    'Some Folder'   some_file   some_other_file
 
 Using unixify in a folder with hidden files and directories:
 
@@ -64,6 +66,13 @@ Using unixify in a folder with hidden files and directories:
     $ ls -a
      .  ..  .some_file  some_file  some_folder  .some_hidden_folder  some_other_file
      
+When providing arguments, unixify will change only files (and folders!) with given filenames. Example:
+
+    $ ls -a
+     .   ..  '.Some Hidden Folder'  'Some Other File'   SomeFile
+    $ unixify -yes ".Some Hidden Folder" "Some Other File"
+    $ ls -a
+    .  ..  SomeFile  .some_hidden_folder  some_other_file
 
 Using unixify, when there is nothing more to rename:
 
