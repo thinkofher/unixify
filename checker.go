@@ -56,3 +56,11 @@ func isHiddenOrDir(file os.FileInfo) bool {
 func isNormal(file os.FileInfo) bool {
 	return !isDir(file) && !isHidden(file)
 }
+
+// filenameChecker returns checker function to
+// verify if files filename is equal to given string
+func filenameChecker(filename string) checker {
+	return func(file os.FileInfo) bool {
+		return file.Name() == filename
+	}
+}
