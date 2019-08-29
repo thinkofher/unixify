@@ -9,10 +9,8 @@ Installation
 **Unixify** is completely written in go with no dependencies, so all you have to do is install git, go and execute below commands.
 
     $ go get github.com/thinkofher/unixify
-    $ cd $GOPATH/src/github.com/thinkofher/unixify
-    $ go install .
 
-Make sure you have $GOPATH/bin added to your $PATH variable.
+Make sure you have `$GOPATH/bin` added to your `$PATH` variable.
 
 Usage
 ----
