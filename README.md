@@ -17,15 +17,15 @@ Usage
 
     $ unixify -help
     USAGE:
-        unixify [OPTIONS]
+        unixify [OPTIONS] [ARGS...]
 
     INFO:
         Simple portable command line interface tool
         for changing file and folder names to be more
         unixy.
-    
+
         Examples:
-        
+
         * "Some File"         -> "some_file"
         * "sOme File"         -> "some_file"
         * "SOMEFILE"          -> "somefile"
@@ -33,7 +33,7 @@ Usage
 
     AUTHOR:
         Beniamin Dudek <beniamin.dudek@yahoo.com>
-    
+
     OPTIONS:
         -dirs
             include directories
@@ -65,7 +65,7 @@ Using unixify in a folder with hidden files and directories:
     $ unixify -dirs -hidden -yes
     $ ls -a
      .  ..  .some_file  some_file  some_folder  .some_hidden_folder  some_other_file
-     
+
 When providing arguments, unixify will change only files (and folders!) with given filenames. Example:
 
     $ ls -a
