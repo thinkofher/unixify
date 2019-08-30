@@ -42,7 +42,7 @@ func main() {
 	}
 
 	// get current working directory
-	cwd, err := pwd()
+	cwd, err := os.Getwd()
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "Cannot get current working directory.")
 		os.Exit(1)

@@ -33,15 +33,6 @@ func askUser(question string) (bool, error) {
 	}
 }
 
-// pwd returns current working directory.
-func pwd() (string, error) {
-	ans, err := os.Getwd()
-	if err != nil {
-		return "", err
-	}
-	return ans, nil
-}
-
 // unixify returns unixy version of given filename.
 func unixify(filename string) string {
 	return strings.ToLower(strings.ReplaceAll(filename, " ", "_"))
